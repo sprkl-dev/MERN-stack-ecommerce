@@ -3,6 +3,7 @@ const expressAsyncHandler = require('express-async-handler');
 const Product = require('../models/productModel');
 const data = require('../seeds/seed');
 const productRouter = express.Router();
+const axios = require('axios');
 
 //https://www.npmjs.com/package/express-async-handler/v/1.1.4
 // if error, it will be passed to error handler defined in server.js 
@@ -18,6 +19,8 @@ productRouter.get(
 
 // get all products /api/products/
 productRouter.get('/', expressAsyncHandler(async (req, res) => {
+    const hello = await axios.get('http://localhost:7777');
+    console.log(`response from sprkl service: ${hello.data}`)
     const products = await Product.find({});
     res.send( products );
 }));
