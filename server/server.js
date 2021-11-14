@@ -6,8 +6,9 @@ const userRouter = require('./routes/userRouter');
 const productRouter = require('./routes/productRouter');
 const orderRouter = require('./routes/orderRouter');
 const app = express();
+const axios = require('axios')
 
-//db connect 
+//db connect
 // console.log(process.env.MONGODB_URI );
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern_ecommerce', {
     useNewUrlParser: true,
@@ -48,7 +49,9 @@ app.use((err, req, res, next) => {
     res.status(500).send({message: err.message});
 });
 
-//server 
-app.listen(PORT, () => {
+//server
+app.listen(PORT, async () => {
     console.log(`listening on PORT ${PORT}. http://localhost:${PORT}`);
+    console.log(`adding seed data`)
+    await axios.get(`http://localhost:${PORT}/api/products/seed`)
 });
