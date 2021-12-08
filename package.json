@@ -6,9 +6,10 @@
   "scripts": {
     "start": "npm run mongo && npm run dev",
     "mongo": "docker stop mongo-example ; docker rm mongo-example ; docker run -dp 27017:27017 --name mongo-example mongo",
-    "start:server": "nodemon --watch . --exec \"../../../sprkl-dev/gitelemetry/cli/bin/gitelemetry apply && concurrently 'node ./server/server.js' 'node ./sprkl/index.js'\"",
+    "start:backend": "concurrently \"node ./server/server.js\" \"node ./sprkl/index.js\"",
+    "start:server:dev": "nodemon --watch . --exec \"gitelemetry apply && npm run start:backend\"",
     "start:client": "cd client && npm start",
-    "dev": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "dev": "concurrently \"npm run start:server:dev\" \"npm run start:client\"",
     "install": "cd client && npm i",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
