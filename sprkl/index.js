@@ -1,10 +1,11 @@
-const express = require('express')
-const app = express()
-const port = 7777
+require('@sprkl/gitelemetry').init('sprkl');
+const express = require('express');
+const app = express();
+const port = 7777;
 
 app.get('/', (req, res) => {
-    res.send('demo')
-})
+    res.send('demo');
+});
 
 app.listen(port, () => {
     console.log(`Demo app listening at http://localhost:${port}`);
