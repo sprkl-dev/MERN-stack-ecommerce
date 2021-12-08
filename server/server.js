@@ -1,3 +1,4 @@
+require('@sprkl/gitelemetry').init('server');
 require('dotenv').config({ path: __dirname + '/.env' });
 const express = require('express');
 const path = require('path');
@@ -6,7 +7,6 @@ const userRouter = require('./routes/userRouter');
 const productRouter = require('./routes/productRouter');
 const orderRouter = require('./routes/orderRouter');
 const app = express();
-const axios = require('axios')
 
 //db connect
 // console.log(process.env.MONGODB_URI );
@@ -52,6 +52,4 @@ app.use((err, req, res, next) => {
 //server
 app.listen(PORT, async () => {
     console.log(`listening on PORT ${PORT}. http://localhost:${PORT}`);
-    console.log(`adding seed data`)
-    await axios.get(`http://localhost:${PORT}/api/products/seed`)
 });
