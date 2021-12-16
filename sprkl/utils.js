@@ -1,5 +1,7 @@
 const Metrics = require('./models/metric')
 const data = require('./seed');
+const axios = require('axios');
+//const { default: axios } = require('axios');
 
 let seeded = false;
 
@@ -10,7 +12,6 @@ async function seed() {
     }
 }
 
-
 async function getMetrics() {
     await seed();
 
@@ -18,4 +19,10 @@ async function getMetrics() {
     return current;
 }
 
+async function retrieveMetrics() {
+   const res = await axios.get('http://localhost:7777/metrics');
+   return res;
+}
+
 module.exports.getMetrics = getMetrics;
+module.exports.retrieveMetrics = retrieveMetrics;
