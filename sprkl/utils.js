@@ -15,6 +15,7 @@ async function getMetrics() {
     await seed();
 
     const current = await Metrics.findOne();
+    return current;
 }
 
 module.exports.getMetrics = getMetrics;
