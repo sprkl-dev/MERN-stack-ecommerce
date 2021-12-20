@@ -37,6 +37,7 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
+    "cypress": "^9.1.1",
     "eslint": "^7.12.1",
     "eslint-plugin-react": "^7.22.0",
     "nodemon": "^2.0.6"
