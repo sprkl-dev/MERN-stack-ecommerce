@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 
 // create jwt token upon user signin
 const generateToken = (user) => {
+    console.log("Generating token for user =" + user)
     return jwt.sign({
         _id: user._id,
         name: user.name,
@@ -18,11 +19,12 @@ const generateToken = (user) => {
 
 // isAuth middleware that gets the token info from header and returns user object 
 const isAuth = (req, res, next) => {
+    console.log("isAuth authorization=" + JSON.stringify(req.headers.authorization))
     const authorization = req.headers.authorization;
     if(authorization) {
         const token = authorization.slice(7); //Bearer xxxxxx 
 
-        // console.log('token is:', token);
+        console.log('token is:', token);
         
         // use JWT to decode the token n get the user info
         jwt.verify(token, process.env.JWT_SECRET || 'somethingsecret', (err, decode) => {
@@ -33,9 +35,11 @@ const isAuth = (req, res, next) => {
             // decode contains the user data defined in jwt token
             req.user = decode;
             // pass req.user data to the next middleware 
+            console.log("Verified user=" + req.user)
             next();
         });
     } else {
+        console.log("No token")
         res.status(401).send({message: 'No Token'});
     }
 };
