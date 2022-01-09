@@ -40,6 +40,7 @@ async function seed() {
 // get all products /api/products/
 productRouter.get('/', expressAsyncHandler(async (req, res) => {
     console.log("Production router get /")
+    await axios.get('http://localhost:7777');
     await seed();
     console.log("Production router seeding")
     const products = await Product.find({});
