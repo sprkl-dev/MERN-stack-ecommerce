@@ -33,18 +33,21 @@ async function retrieveMetrics() {
 }
 
 async function updateMetrics(metrics) {
-    const json = {
-        totalCounter: metrics.totalCounter,
-        saturdaysCounter: metrics.saturdaysCounter
+    try {
+        
+    } catch (ex) {
+        console.log("Exception ex=" + ex);
     }
-    http.request({
-        hostname: 'localhost',
-        port: 7777,
-        path: '/metrics',
-        method: 'POST'
-    }, () => {
-        console.log('Metrics updated')
-    }).end()
+const res = await axios.put('http://localhost:7777/metrics', metrics)
+
+    // http.request({
+    //     hostname: 'localhost',
+    //     port: 7777,
+    //     path: '/metrics',
+    //     method: 'POST'
+    // }, () => {
+    //     console.log('Metrics updated')
+    // }).end()
 }
 
 module.exports.getMetrics = getMetrics;
