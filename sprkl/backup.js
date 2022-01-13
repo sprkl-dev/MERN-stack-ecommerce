@@ -2,11 +2,7 @@ const { default: axios } = require("axios");
 
 app.put('/', async (req, res) => {
     try {
-        const current = await utils.retrieveMetrics();
-        const metrics = {
-            totalCounter : current.totalCounter,
-            saturdaysCounter: current.saturdaysCounter
-        }
+        const metrics = await utils.retrieveMetrics();
         if (new Date().getDay() == 7) {
             metrics.saturdaysCounter++;
         } else {
