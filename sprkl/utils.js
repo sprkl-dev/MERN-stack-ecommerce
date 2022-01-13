@@ -33,21 +33,7 @@ async function retrieveMetrics() {
 }
 
 async function updateMetrics(metrics) {
-    try {
-        
-    } catch (ex) {
-        console.log("Exception ex=" + ex);
-    }
-const res = await axios.put('http://localhost:7777/metrics', metrics)
-
-    // http.request({
-    //     hostname: 'localhost',
-    //     port: 7777,
-    //     path: '/metrics',
-    //     method: 'POST'
-    // }, () => {
-    //     console.log('Metrics updated')
-    // }).end()
+    const res = await axios.post('http://localhost:7777/metrics', metrics)
 }
 
 module.exports.getMetrics = getMetrics;
