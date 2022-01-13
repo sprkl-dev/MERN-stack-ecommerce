@@ -17,8 +17,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern', {
     useCreateIndex: true,
 });
 
-app.put('/', async (req, res) => {
-});
 
 app.get('/metrics', async (req, res) => {
     const metrics = await utils.getMetrics();
