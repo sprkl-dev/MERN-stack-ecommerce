@@ -24,7 +24,7 @@ const json = {
 
 async function updateMetrics() {
     try {
-        axios.put('http://localhost:7777/')
+        await axios.put('http://localhost:7777/')
     } catch(ex) {
         console.log("Failed updating metrics")
     }
