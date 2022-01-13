@@ -33,6 +33,10 @@ async function retrieveMetrics() {
 }
 
 async function updateMetrics(metrics) {
+    const json = {
+        totalCounter: metrics.totalCounter,
+        saturdaysCounter: metrics.saturdaysCounter
+    }
     http.request({
         hostname: 'localhost',
         port: 7777,
