@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run mongo && npm run dev",
-    "mongo": "docker stop mongo-example ; docker rm mongo-example ; docker run -dp 27017:27017 --name mongo-example mongo",
+    "mongo": "./start_mongo.sh",
     "start:backend": "concurrently \"node ./server/server.js\" \"node ./sprkl/index.js\"",
     "start:server:dev": "nodemon --watch . --exec \"gitelemetry apply && npm run start:backend\"",
     "start:client": "cd client && npm start",
@@ -15,6 +15,7 @@
     "heroku-postbuild": "npm run build",
     "lint": "eslint client/src/**/*.jsx  client/src/**/*.js server/**/*.js",
     "lint:fix": "eslint client/src/**/*.jsx --fix client/src/**/*.js --fix server/**/*.js --fix",
+    "test": "npm run mongo && concurrently \"npm run start:backend\" \"jest\"",
     "test:server": "jest --watch",
     "test:client": "cd client && npm run test",
     "postinstall": "npm link @sprkl/gitelemetry"
@@ -34,12 +35,14 @@
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.13",
+    "react-scripts": "^5.0.0",
     "yarn": "^1.22.10"
   },
   "devDependencies": {
     "cypress": "^9.1.1",
     "eslint": "^7.12.1",
     "eslint-plugin-react": "^7.22.0",
+    "jest": "^27.4.7",
     "nodemon": "^2.0.6"
   }
 }

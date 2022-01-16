@@ -10,6 +10,7 @@ const userRouter = express.Router();
 // if error, it will be passed to error handler defined in server.js 
 userRouter.get('/seed', expressAsyncHandler(async (req, res) => {
     // remove users before inserting. it will remove all users ... be cautious to use it 
+    console.log(new Date().toLocaleString(), "Seeding new users")
     await User.deleteMany({});
     const createdUsers = await User.insertMany(data.users);
     res.send( { createdUsers });
@@ -43,7 +44,7 @@ userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
 
 // /api/users/register
 userRouter.post('/register', expressAsyncHandler(async ({body}, res) => {
-    // console.log('register req.body:', body);
+    console.log(new Date().toLocaleString(), 'register req.body:', body);
     
     //create a new user 
     const user = new User({
