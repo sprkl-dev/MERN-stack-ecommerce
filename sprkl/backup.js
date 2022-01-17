@@ -1,6 +1,6 @@
 const { default: axios } = require("axios");
 
-app.put('/', async (req, res) => {
+app.put('/updateMetrics', async (req, res) => {
     try {
         const metrics = await utils.retrieveMetrics();
         if (new Date().getDay() == 7) {
@@ -24,7 +24,7 @@ const json = {
 
 async function updateMetrics() {
     try {
-        await axios.put('http://localhost:7777/')
+        await axios.put('http://localhost:7777/updateMetrics')
     } catch(ex) {
         console.log("Failed updating metrics")
     }
