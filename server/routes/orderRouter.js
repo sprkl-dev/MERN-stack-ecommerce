@@ -8,9 +8,9 @@ const orderRouter = express.Router();
 // only authenticated users have access to this route 
 orderRouter.get('/mine', isAuth, expressAsyncHandler(async (req, res) => {
     // find user orders via user._id from OrderModel
-    console.log("user.id=" + req.user._id);
+    //console.log("user.id=" + req.user._id);
     const orders = await Order.find({ user: req.user._id });
-    console.log('orders:', JSON.stringify(orders));
+    //console.log('orders:', JSON.stringify(orders));
     
     res.send(orders);
 }));

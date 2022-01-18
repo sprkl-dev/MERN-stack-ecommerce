@@ -7,7 +7,7 @@ let seeded = false;
 
 async function seed() {
     if (!seeded) {
-        console.log("Seeding")
+        //console.log("Seeding")
         await Metrics.insertMany(data.metrics)
         seeded = true;
     }

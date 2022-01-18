@@ -23,7 +23,7 @@ productRouter.get(
 let injected = false;
 
 async function seed() {
-    console.log("Seeding injected = " + injected)
+    //console.log("Seeding injected = " + injected)
     if (!injected) {
         try {
             await Product.insertMany(data.products);
@@ -37,25 +37,25 @@ async function seed() {
 
 // get all products /api/products/
 productRouter.get('/', expressAsyncHandler(async (req, res) => {
-    console.log("Production router get /")
+    //console.log("Production router get /")
     await seed();
-    console.log("Production router seeding")
+    //console.log("Production router seeding")
     const products = await Product.find({});
-    console.log("Production router found products")
+    //console.log("Production router found products")
     res.send( products );
 
 }));
 
 // temp product api/product route 
 productRouter.get('/:id', expressAsyncHandler(async (req, res) => {
-    console.log("Production router get id")
+    //console.log("Production router get id")
     const product = await Product.findById(req.params.id);
     //check condition
     if(product) {
-        console.log("Production router found product")
+        //console.log("Production router found product")
         res.send(product);
     } else {
-        console.log("Production product not found")
+        //console.log("Production product not found")
         res.status(404).send({ message: 'Product Not Found'});
     }
 })

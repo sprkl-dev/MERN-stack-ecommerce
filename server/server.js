@@ -9,7 +9,7 @@ const orderRouter = require('./routes/orderRouter');
 const app = express();
 
 //db connect
-console.log(process.env.MONGODB_URI );
+//console.log(process.env.MONGODB_URI );
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern', {
 
 const PORT = process.env.PORT || 8080;
 
-console.log("Starting middleware");
+//console.log("Starting middleware");
 //use express middlewaree
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,7 +28,7 @@ app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
 
-console.log("Setting routes");
+//console.log("Setting routes");
 
 //Paypal client ID from .env file. send back to front end
 app.get('/api/config/paypal', (req, res) => {
@@ -47,12 +47,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //error handling middleware
-console.log("Error handling middleware")
+//console.log("Error handling middleware")
 app.use((err, req, res, next) => {
     res.status(500).send({message: err.message});
 });
 
 //server
 app.listen(PORT, async () => {
-    console.log(`listening on PORT ${PORT}. http://localhost:${PORT}`);
+    //console.log(`listening on PORT ${PORT}. http://localhost:${PORT}`);
 });
