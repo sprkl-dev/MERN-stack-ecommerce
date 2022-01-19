@@ -1,4 +1,4 @@
-require('@sprkl/sprkl').init('sprkl');
+require('@sprkl/sprkl').init({serviceName: 'sprkl'});
 const express = require('express');
 const app = express();
 const port = 7777;
