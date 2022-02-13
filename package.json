@@ -6,8 +6,8 @@
   "scripts": {
     "start": "npm run mongo && npm run dev",
     "mongo": "./start_mongo.sh",
-    "start:backend": "concurrently \"node ./server/server.js\" \"node ./sprkl/index.js\"",
-    "start:server:dev": "nodemon --watch . --exec \"gitelemetry apply && npm run start:backend\"",
+    "start:backend": "concurrently \"sprkl --name catalog -- node ./server/server.js\" \"sprkl --name metrics -- node ./sprkl/index.js\"",
+    "start:server:dev": "nodemon --watch . --exec \"sprkl apply && npm run start:backend\"",
     "start:client": "cd client && npm start",
     "dev": "concurrently \"npm run start:backend\" \"npm run start:client\"",
     "install": "cd client && npm i",
@@ -18,7 +18,7 @@
     "test": "npm run mongo && concurrently \"npm run start:backend\" \"jest\"",
     "test:server": "jest --watch",
     "test:client": "cd client && npm run test",
-    "postinstall": "npm link @sprkl/gitelemetry"
+    "postinstall": "npm link @sprkl/sprkl"
   },
   "jest": {
     "testEnvironment": "node",
