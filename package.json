@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run mongo && npm run dev",
     "mongo": "./start_mongo.sh",
-    "start:backend": "concurrently \"sprkl --name catalog -- node ./server/server.js\" \"sprkl --name metrics -- node ./sprkl/index.js\"",
+    "start:backend": "concurrently \"sprkl --name catalog -- node ./server/server.js\" \"sprkl --no-apply --name metrics -- node ./sprkl/index.js\"",
     "start:server:dev": "nodemon --watch . --exec \"sprkl apply && npm run start:backend\"",
     "start:client": "cd client && npm start",
     "dev": "concurrently \"npm run start:backend\" \"npm run start:client\"",
