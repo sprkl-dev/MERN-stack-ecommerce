@@ -53,5 +53,5 @@ app.use((err, req, res, next) => {
 
 //server
 app.listen(PORT, async () => {
-    //console.log(`listening on PORT ${PORT}. http://localhost:${PORT}`);
+    console.log(`listening on PORT ${PORT}. http://localhost:${PORT}`);
 });
