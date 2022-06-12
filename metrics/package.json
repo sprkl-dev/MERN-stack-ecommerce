@@ -1,10 +1,10 @@
 {
-  "name": "react-ecommerce",
+  "name": "metrics",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "sprkl -- node ./index.js"
+    "start": "node ./index.js"
   },
   "jest": {
     "testEnvironment": "node",
