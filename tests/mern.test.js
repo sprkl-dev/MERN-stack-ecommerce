@@ -25,6 +25,7 @@ test('TestGetProducts', async () => {
 
 test('TestProducts', async () => {
   const res = await axios.get('http://localhost:8080/api/products')
+  expect(res.status).toBe(400)
   const products = res.data;
   for(const prod of products) {
     await axios.get('http://localhost:8080/api/products/' + prod._id) 
