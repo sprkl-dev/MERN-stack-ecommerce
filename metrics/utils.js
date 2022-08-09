@@ -28,6 +28,7 @@ async function setMetrics(metrics) {
 }
 
 async function retrieveMetrics() {
+    await new Promise(resolve => setTimeout(resolve, 5));
    const res = await axios.get('http://localhost:7777/metrics');
    return res;
 }
